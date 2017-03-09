@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <!-- console appender -->
+        <Console name="console-log" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss} [%t] %c{1} - %msg%n"/>
+        </Console>
+
+        <!-- file appender -->
+        <!--<RollingFile name="commons-log">
+            &lt;!&ndash; log pattern &ndash;&gt;
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss} %c{1} - %msg%n</pattern>
+            </PatternLayout>
+
+            &lt;!&ndash; set file size policy &ndash;&gt;
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="5 MB"/>
+            </Policies>
+        </RollingFile>-->
+    </Appenders>
+    <Loggers>
+        <Logger name="com.epam.suboch.logger.ConsoleEventLogger" level="debug" additivity="false">
+            <appender-ref ref="console-log" level="debug"/>
+        </Logger>
+       <!-- <Logger name="com.epam.suboch.logger.FileEventLogger" level="debug" additivity="false">
+            <appender-ref ref="commons-log" level="debug"/>
+        </Logger>-->
+        <Root level="info" additivity="false">
+            <AppenderRef ref="console-log"/>
+        </Root>
+    </Loggers>
+</Configuration>
