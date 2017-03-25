@@ -25,7 +25,7 @@ public class App {
     @Resource(name = "loggerMap")
     private Map<EventType, IEventLogger> loggerMap;
 
-    public void logEvent(EventType eventType, Event event) {
+    private void logEvent(EventType eventType, Event event) {
         IEventLogger eventLogger = loggerMap.get(eventType);
         if (eventLogger == null) {
             eventLogger = defaultLogger; // qualified field

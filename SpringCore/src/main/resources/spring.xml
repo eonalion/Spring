@@ -28,19 +28,17 @@
     <bean id="client" class="com.epam.suboch.client.Client">
         <property name="id" value="${id}"/>
         <property name="fullName" value="${name}"/>
-        <property name="greeting" value="${greeting}"/>
+        <property name="greeting" value="${greeting}, #{systemEnvironment['USER']}"/>
     </bean>
 
     <util:map id="loggerMap">
         <entry key="#{T(com.epam.suboch.event.EventType).INFO}"
                value-ref="consoleEventLogger"/>
         <entry key="#{T(com.epam.suboch.event.EventType).ERROR}"
-               value-ref="combinedEventLogger"/>
+               value="#{T(com.epam.suboch.event.Event).isDay() ? combinedEventLogger : fileEventLogger}"/>
     </util:map>
 
     <bean id="app" class="com.epam.suboch.app.App">
-        <!--<constructor-arg ref="client"/>
-        <constructor-arg ref="loggerMap"/>-->
     </bean>
 
     <bean id="event" class="com.epam.suboch.event.Event" scope="prototype">
