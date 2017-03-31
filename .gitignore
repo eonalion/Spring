@@ -2,6 +2,7 @@
 *.zip
 *.rar
 *.jar
+*.log
 **/target/
 **/.idea/
 **/logs/
